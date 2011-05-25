@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  peak: MyString
+  start_time: 1
+  end_time: 1
+
+two:
+  name: MyString
+  peak: MyString
+  start_time: 1
+  end_time: 1
