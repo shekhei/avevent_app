@@ -1,8 +1,12 @@
 AveventApp::Application.routes.draw do
-  resources :events
 
+  resources :events
   resources :users
 
+  match '/about',   :to => 'pages#about'
+  match '/faq',   :to => 'pages#faq'
+  
+  root :to => 'pages#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
