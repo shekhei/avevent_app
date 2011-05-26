@@ -3,6 +3,7 @@ AveventApp::Application.routes.draw do
   resources :events
   resources :users
 
+  match '/signup', :to => 'users#new'
   match '/about',   :to => 'pages#about'
   match '/faq',   :to => 'pages#faq'
   
