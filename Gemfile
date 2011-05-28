@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rake', '0.8.7'
+gem 'rake',  '0.8.7'
 gem 'rails', '3.0.7'
 
 # Bundle edge Rails instead:
@@ -13,7 +13,9 @@ end
 
 group :test do 
   gem 'rspec', '2.5.0'
-  gem 'spork', '0.9.0.rc5'
+  gem 'factory_girl_rails', '1.0'
+  gem 'spork', '0.9.0.rc7'
+  gem 'webrat', '0.7.1'
 end
 
 gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
