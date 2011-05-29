@@ -1,5 +1,13 @@
 require 'spec_helper'
 
 describe Rsvp do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @user = Factory(:user)
+    @event = Factory(:event)
+    @rsvp = @user.rsvps.build(:event_id => @event.id)
+  end
+
+  it "should create a new rsp given valid attributes" do
+    @rsvp.save!
+  end
 end

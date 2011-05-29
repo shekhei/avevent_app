@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
   has_many :rsvps
   has_many :users, :through => :rsvps
   
-  attr_accessible :name, :peak
+  attr_accessible :name, :peak, :start_time, :end_time
 
 
 end

@@ -1,4 +1,5 @@
 class RsvpsController < ApplicationController
+  before_filter :authenticate
   # GET /rsvps
   # GET /rsvps.xml
   def index
@@ -40,17 +41,19 @@ class RsvpsController < ApplicationController
   # POST /rsvps
   # POST /rsvps.xml
   def create
-    @rsvp = Rsvp.new(params[:rsvp])
+    @event = Event.find(params[:rsvp][:event_id])
+    current_user.attend!(@event)
+    redirect_to rsvps_path
 
-    respond_to do |format|
-      if @rsvp.save
-        format.html { redirect_to(@rsvp, :notice => 'Rsvp was successfully created.') }
-        format.xml  { render :xml => @rsvp, :status => :created, :location => @rsvp }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @rsvp.errors, :status => :unprocessable_entity }
-      end
-    end
+    #respond_to do |format|
+    #  if @rsvp.save
+    #    format.html { redirect_to(@rsvp, :notice => 'Rsvp was successfully created.') }
+    #    format.xml  { render :xml => @rsvp, :status => :created, :location => @rsvp }
+    #  else
+    #    format.html { render :action => "new" }
+    #    format.xml  { render :xml => @rsvp.errors, :status => :unprocessable_entity }
+    #  end
+    #end
   end
 
   # PUT /rsvps/1
@@ -72,9 +75,8 @@ class RsvpsController < ApplicationController
   # DELETE /rsvps/1
   # DELETE /rsvps/1.xml
   def destroy
-    @rsvp = Rsvp.find(params[:id])
-    @rsvp.destroy
-
+    @event = Rsvp.find(params[:id]).event_id
+    current_user.unattend!(@event)
     respond_to do |format|
       format.html { redirect_to(rsvps_url) }
       format.xml  { head :ok }

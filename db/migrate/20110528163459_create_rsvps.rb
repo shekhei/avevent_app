@@ -7,6 +7,9 @@ class CreateRsvps < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :rsvps, :user_id
+    add_index :rsvps, :event_id
+    add_index :rsvps, [:user_id, :event_id], :unique => true
   end
 
   def self.down

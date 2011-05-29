@@ -26,4 +26,17 @@ class User < ActiveRecord::Base
                          :uniqueness      => { :case_sensitive => false }
   validates :department, :presence        => true
 
+  def attending?(event)
+    rsvps.find_by_event_id(event)
+  end
+
+  def attend!(event)
+    rsvps.create!(:event_id => event.id)
+  end
+
+  def unattend!(event)
+    rsvps.find_by_event_id(event).destroy
+    #rsvps.create!(:event_id => event.id, :status => 0)
+  end
+
 end
