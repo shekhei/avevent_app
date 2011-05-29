@@ -1,2 +1,20 @@
-<%= render 'events/month' %>
+<div class="eventheader">
+  <h2>Event List</h2>
+</div>
+<div class="mainCol">
+  <div class="dateheader">
+    <h3>Today</h3>
+  </div>
+</div>
+<% @todayevents.each do |event| %>
+<div class="eventRow">
 
+  <tr>
+    <td><%= event.name %></td>
+    <td><%= event.peak %></td>
+    <td><%= event.start_time %></td>
+    <td><%= event.end_time %></td>
+  </tr>
+
+</div>
+<% end %>

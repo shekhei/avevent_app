@@ -18,5 +18,7 @@ class Event < ActiveRecord::Base
   
   attr_accessible :name, :peak, :start_time, :end_time
 
-
+  def self.show_today
+    where(:start_time => Time.now.midnight - 1.day..Time.now.midnight)
+  end
 end
