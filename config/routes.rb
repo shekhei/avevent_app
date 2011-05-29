@@ -1,8 +1,13 @@
 AveventApp::Application.routes.draw do
 
+  resources :rsvps
+
   resources :events
   resources :users
-
+  resources :sessions, :only => [:new, :create, :destroy]
+  
+  match '/signin', :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
   match '/signup', :to => 'users#new'
   match '/about',   :to => 'pages#about'
   match '/faq',   :to => 'pages#faq'

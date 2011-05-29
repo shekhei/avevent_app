@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
+  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user,   :only => [:edit, :update, :destroy]
   # GET /users
   # GET /users.xml
   def index
@@ -20,7 +23,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+	@title = "Edit user"
   end
 
   # POST /users
@@ -28,7 +31,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 	if @user.save
-	  flash[:success] = "Your details are saved!"
+	  sign_in @user
+	  flash[:success] = "Welcome to Staff Basecamp"
 	  redirect_to @user
     else
 	  @title = "Sign up"
@@ -39,12 +43,13 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-	
+	  flash[:success] = "Profile updated."
+	  redirect_to @user
 	else
-
+      @title = "Edit user"
+	  render 'edit'
     end
   end
 
@@ -55,4 +60,19 @@ class UsersController < ApplicationController
     @user.destroy
 
   end
+  
+  private
+    
+	def authenticate 
+	  deny_access unless signed_in?
+	end
+	
+	def correct_user
+	  @user = User.find(params[:id])
+	  redirect_to(root_path) unless current_user?(@user)
+	end
+	
+	def admin_user
+	  redirect_to(root_path) unless current_user.admin?
+	end
 end

@@ -1,0 +1,11 @@
+<h1>Enter your Aviva email address</h1>
+<%= form_for(:session, :url => sessions_path) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Sign in" %>
+  </div>
+<% end %>
+
