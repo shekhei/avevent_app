@@ -1,13 +1,17 @@
 <header>
   <%#= link_to logo, root_path %>
-  <nav class="round">
+  <nav>
     <ul>
       <li><%= link_to "Home", root_path %></li>
+    </ul>
+  </nav>
+  <nav class="right">
+    <ul>
       <% if signed_in? %>
       <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
       <% else %>
-      <li><%= link_to "Sign in", signin_path %></li>
-      <% end %>	  
+      <li><%= link_to "Staff Entrance", signin_path %></li>
+      <% end %>
     </ul>
   </nav>
 </header>

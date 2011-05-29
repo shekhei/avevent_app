@@ -1,22 +1,25 @@
 .container {
-  width: 710px;
+  width: 960px;
 }
 
 body {
-  background: #cff;
+  /*background: url("../images/background.gif") repeat-y scroll center center #EDF5F9;*/
+  color: #333333;
+  font-family: Arial,Helvetica,sans-serif;
 }
 
 header {
-  padding-top: 20px;
+  background-color: #FFD900;
+  padding-top:1px;
+  height:40px;
 }
 
 header img {
-  padding: 1em;
+  /*padding: 1em;*/
   background: #fff;
 }
 
 section {
-  margin-top: 1em;
   font-size: 120%;
   padding: 20px;
   background: #fff;
@@ -29,28 +32,27 @@ section h1 {
 /* Links */
 
 a {
-  color: #09c;
+  color: #004FB6;
   text-decoration: none;
 }
 
 a:hover {
-  color: #069;
+  color: #004FB6;
   text-decoration: underline;
 }
 
 a:visited {
-  color: #069;
+  color: #004FB6;
 }
 
 /* Navigation */
 
 nav {
-  float: right;
+  float: left;
 }
 
 nav {
-  background-color: white;
-  padding: 0 0.7em;
+  padding: 0 1em;
   white-space: nowrap;
 }
 
@@ -62,16 +64,18 @@ nav ul {
 nav ul li {
   list-style-type: none;
   display: inline-block;
-  padding: 0.2em 0;
+  padding: 0.8em 0;
+  font-size: 1.2em
 }
 
 nav ul li a {
   padding: 0 5px;
   font-weight: bold;
+  color: #004FB6;
 }
 
 nav ul li a:visited {
-  color: #09c;
+  color: #004FB6;
 }
 
 nav ul li a:hover {
@@ -189,4 +193,28 @@ ul.users {
 
 .users li {
   list-style: none;
+}
+
+/* Home page */
+.eventheader{
+   padding:6px 0 16px;
+}
+.mainCol{
+   width:490px;
+}
+.mainCol .dateheader{
+   background-color:#F2F2F2;
+   border-bottom: medium none;
+   border-top:1px solid #E2E2E2;
+   padding: 4px 5px 5px;
+}
+.dateheader h3{
+   color:#333333;
+   font-size:12px;
+   font-weight:bold;
+   line-height:1;
+   margin-bottom:0;
+}
+.eventRow{
+  padding:0 5px;
 }
