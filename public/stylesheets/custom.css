@@ -229,3 +229,33 @@ ul.users {
   padding: 8px 0;
 }
 
+.eventRow ul li .rsvpBtn{
+  float: right;
+  text-align:right;
+  margin-top:10px;
+  padding-left:8px;
+}
+
+.eventRow ul li .eventLogo{
+  float:left;
+  margin-right:10px;
+}
+
+.eventRow ul li .eventInfo{
+  height:50px;
+  vertical-align:middle;
+  display:table-cell;
+  width:10000px;
+}
+
+.eventRow ul li .eventTitle{
+  font-weight:bold;
+  margin-right:5px;
+}
+
+.eventRow ul li .eventTitleLink{
+  color:#004FB6;
+  cursor:pointer;
+  text-decoration:none;
+}
+
