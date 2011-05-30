@@ -200,7 +200,7 @@ ul.users {
    padding:6px 0 16px;
 }
 .mainCol{
-   width:490px;
+   width:550px;
 }
 .mainCol .dateheader{
    background-color:#F2F2F2;
@@ -218,3 +218,14 @@ ul.users {
 .eventRow{
   padding:0 5px;
 }
+
+.eventRow ul{
+  list-style-type:none;
+  margin: 0;
+  padding: 0;
+}
+
+.eventRow ul li{
+  padding: 8px 0;
+}
+

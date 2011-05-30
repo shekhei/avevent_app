@@ -2,11 +2,31 @@
   <h2>Event List</h2>
 </div>
 <div class="mainCol">
+<% if !@today_events.empty? %>
   <div class="dateheader">
     <h3>Today</h3>
   </div>
-</div>
-<% @todayevents.each do |event| %>
+  <div class="eventRow">
+    <ul>
+<% end %>
+<% @today_events.each do |event| %>
+  <li class="eventItem">
+    <td><%= event.name %></td>
+    <td><%= event.peak %></td>
+    <td><%= event.start_time %></td>
+    <td><%= event.end_time %></td>
+  </li>
+<% end %>
+<% if !@today_events.empty? %>
+    </ul>
+  </div>
+<% end %>
+<% if !@tomorrow_events.empty? %>
+  <div class="dateheader">
+    <h3>Tomorrow</h3>
+  </div>
+<% end %>
+<% @tomorrow_events.each do |event| %>
 <div class="eventRow">
 
   <tr>
@@ -18,3 +38,21 @@
 
 </div>
 <% end %>
+<% if !@week_events.empty? %>
+  <div class="dateheader">
+    <h3>This week</h3>
+  </div>
+<% end %>
+<% @week_events.each do |event| %>
+<div class="eventRow">
+
+  <tr>
+    <td><%= event.name %></td>
+    <td><%= event.peak %></td>
+    <td><%= event.start_time %></td>
+    <td><%= event.end_time %></td>
+  </tr>
+
+</div>
+<% end %>
+</div>
