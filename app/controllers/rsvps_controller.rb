@@ -6,7 +6,7 @@ class RsvpsController < ApplicationController
     @rsvps = Rsvp.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html index.html.erb
       format.xml  { render :xml => @rsvps }
     end
   end
@@ -17,7 +17,7 @@ class RsvpsController < ApplicationController
     @rsvp = Rsvp.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html show.html.erb
       format.xml  { render :xml => @rsvp }
     end
   end
@@ -28,7 +28,7 @@ class RsvpsController < ApplicationController
     @rsvp = Rsvp.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html new.html.erb
       format.xml  { render :xml => @rsvp }
     end
   end
@@ -48,7 +48,7 @@ class RsvpsController < ApplicationController
     #respond_to do |format|
     #  if @rsvp.save
     #    format.html { redirect_to(@rsvp, :notice => 'Rsvp was successfully created.') }
-    #   format.xml  { render :xml => @rsvp, :status => :created, :location => @rsvp }
+    #    format.xml  { render :xml => @rsvp, :status => :created, :location => @rsvp }
     #  else
     #    format.html { render :action => "new" }
     #    format.xml  { render :xml => @rsvp.errors, :status => :unprocessable_entity }
