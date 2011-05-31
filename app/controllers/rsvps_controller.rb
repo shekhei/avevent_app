@@ -41,9 +41,9 @@ class RsvpsController < ApplicationController
   # POST /rsvps
   # POST /rsvps.xml
   def create
-    event = Event.find(params[:rsvp][:event_id])
-    current_user.attend!(event)
-    redirect_to event_path(event.id), :notice => "RSVP Saved"
+    @event = Event.find(params[:rsvp][:event_id])
+    current_user.attend!(@event)
+    redirect_to event_path(@event.id), :notice => "RSVP Saved"
     #@rsvp = Rsvp.new(params[:rsvp])
     #respond_to do |format|
     #  if @rsvp.save
@@ -75,9 +75,9 @@ class RsvpsController < ApplicationController
   # DELETE /rsvps/1
   # DELETE /rsvps/1.xml
   def destroy
-    event = Rsvp.find(params[:id]).event_id
-    current_user.unattend!(event)
-    redirect_to event_path(event), :notice => "RSVP Saved"
+    @event = Rsvp.find(params[:id]).event_id
+    current_user.unattend!(@event)
+    redirect_to event_path(@event), :notice => "RSVP Saved"
     #respond_to do |format|
     #  format.html { redirect_to(rsvps_url) }
     #  format.xml  { head :ok }

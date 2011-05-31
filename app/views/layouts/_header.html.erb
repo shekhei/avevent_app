@@ -1,9 +1,23 @@
 <header>
   <%#= link_to logo, root_path %>
   <nav>
-    <ul>
+    <ul id="jsddm">
       <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "About Basecamp", about_path %></li>
+      <% if current_user.admin? %>
       <li><%= link_to "Event", events_path %></li>
+      <% end %>
+      <li><a href="#">The 7 Peaks</a>
+        <ul>
+          <li><%= link_to "Personal", personal_path %></li>
+          <li><%= link_to "Fit", fit_path %></li>
+          <li><%= link_to "Financial", financial_path %></li>
+          <li><%= link_to "Social", social_path %></li>
+          <li><%= link_to "Career", career_path %></li>
+          <li><%= link_to "Community", community_path %></li>
+          <li><%= link_to "Possibility", possibility_path %></li>
+        </ul>
+      </li>
     </ul>
   </nav>
   <nav class="right">

@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_filter :authenticate, :only => [:index, :new, :create, :edit, :update, :destroy]
-  #before_filter :admin_user,   :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :admin_user,   :only => [:index, :new, :create, :edit, :update, :destroy]
   # GET /events
   # GET /events.xml
   def index

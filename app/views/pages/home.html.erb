@@ -11,4 +11,7 @@
   <% if @week_events.any? %>
     <%= render 'pages/event_row', :object => @week_events , :date_type => "This Week"%>
   <% end %>
+  <% if @month_events.any? %>
+    <%= render 'pages/event_row', :object => @month_events , :date_type => "This Month"%>
+  <% end %>
 </div>

@@ -18,6 +18,7 @@
         <div class="eventInfo">
           <span class="eventTitle"><%= link_to event.name, event_path(event.id), :class => "eventTitleLink" %></span>
           <div class="eventDateTime"><%= event.start_time.strftime("%A, %b %d at %I:%M%p") %></div>
+          <div class="eventAttendCount"><%= pluralize(Rsvp.count(:conditions => ['event_id = ?', event.id ]), "participant") %></div>
         </div>
       </li>
     <% end %>

@@ -6,11 +6,18 @@ AveventApp::Application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   
-  match '/signin', :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
-  match '/signup', :to => 'users#new'
-  match '/about',   :to => 'pages#about'
-  match '/faq',   :to => 'pages#faq'
+  match '/signin',     :to => 'sessions#new'
+  match '/signout',    :to => 'sessions#destroy'
+  match '/signup',     :to => 'users#new'
+  match '/about',      :to => 'pages#about'
+  match '/faq',        :to => 'pages#faq'
+  match '/social',     :to => 'pages#social'
+  match '/personal',   :to => 'pages#personal'
+  match '/fit',        :to => 'pages#fit'
+  match '/financial',  :to => 'pages#financial'
+  match '/career',     :to => 'pages#career'
+  match '/community',  :to => 'pages#community'
+  match '/possibility',     :to => 'pages#possibility'
   
   root :to => 'pages#home'
   # The priority is based upon order of creation:
