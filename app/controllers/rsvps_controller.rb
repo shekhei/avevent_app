@@ -17,7 +17,7 @@ class RsvpsController < ApplicationController
     @rsvp = Rsvp.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html  show.html.erb
       format.xml  { render :xml => @rsvp }
     end
   end
@@ -28,7 +28,7 @@ class RsvpsController < ApplicationController
     @rsvp = Rsvp.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html  new.html.erb
       format.xml  { render :xml => @rsvp }
     end
   end
@@ -41,14 +41,13 @@ class RsvpsController < ApplicationController
   # POST /rsvps
   # POST /rsvps.xml
   def create
-    @event = Event.find(params[:rsvp][:event_id])
-    current_user.attend!(@event)
-    redirect_to rsvps_path
-    #@rsvp = Rsvp.new(params[:rsvp])
+    event = Event.find(params[:rsvp][:event_id])
+    current_user.attend!(event)
+    redirect_to event_path(event.id), :notice => 'Your RSVP has been saved'
     #respond_to do |format|
     #  if @rsvp.save
     #    format.html { redirect_to(@rsvp, :notice => 'Rsvp was successfully created.') }
-    #   format.xml  { render :xml => @rsvp, :status => :created, :location => @rsvp }
+    #    format.xml  { render :xml => @rsvp, :status => :created, :location => @rsvp }
     #  else
     #    format.html { render :action => "new" }
     #    format.xml  { render :xml => @rsvp.errors, :status => :unprocessable_entity }
@@ -77,9 +76,10 @@ class RsvpsController < ApplicationController
   def destroy
     @event = Rsvp.find(params[:id]).event_id
     current_user.unattend!(@event)
-    respond_to do |format|
-      format.html { redirect_to(rsvps_url) }
-      format.xml  { head :ok }
-    end
+	redirect_to event_path(@event), :notice => 'Your RSVP has been saved'
+    #respond_to do |format|
+    #  format.html { redirect_to(rsvps_url) }
+    #  format.xml  { head :ok }
+    #end
   end
 end
