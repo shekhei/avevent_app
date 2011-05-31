@@ -1,0 +1,18 @@
+<div class="dateheader">
+  <h3>Today</h3>
+</div>
+<div class="eventRow">
+  <ul>
+    <% object.each do |event| %>
+      <li>
+        <%= link_to image_tag("eventlogo.png", :alt => event.name), event_path(event.id), :class => "eventLogo" %>
+        <div class="rsvpBtn">
+          <%= link_to 'RSVP', new_rsvp_path %>
+        </div>
+        <div class="eventInfo">
+          <span class="eventTitle"><%= link_to event.name, event_path(event.id), :class => "eventTitleLink" %></span>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

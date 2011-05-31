@@ -2,60 +2,13 @@
   <h2>Event List</h2>
 </div>
 <div class="mainCol">
-<% if !@today_events.empty? %>
-  <div class="dateheader">
-    <h3>Today</h3>
-  </div>
-  <div class="eventRow">
-    <ul>
-<% end %>
-<% @today_events.each do |event| %>
-  <li>
-    <%= link_to image_tag("eventlogo.png", :alt => event.name), event_path(event.id), :class => "eventLogo" %>
-    <div class="rsvpBtn">
-      <%= link_to 'RSVP', new_rsvp_path %>
-    </div>
-    <div class="eventInfo">
-      <span class="eventTitle"><%= link_to event.name, event_path(event.id), :class => "eventTitleLink" %></span>
-    </div>
-  </li>
-<% end %>
-<% if !@today_events.empty? %>
-    </ul>
-  </div>
-<% end %>
-<% if !@tomorrow_events.empty? %>
-  <div class="dateheader">
-    <h3>Tomorrow</h3>
-  </div>
-<% end %>
-<% @tomorrow_events.each do |event| %>
-<div class="eventRow">
-
-  <tr>
-    <td><%= event.name %></td>
-    <td><%= event.peak %></td>
-    <td><%= event.start_time %></td>
-    <td><%= event.end_time %></td>
-  </tr>
-
-</div>
-<% end %>
-<% if !@week_events.empty? %>
-  <div class="dateheader">
-    <h3>This week</h3>
-  </div>
-<% end %>
-<% @week_events.each do |event| %>
-<div class="eventRow">
-
-  <tr>
-    <td><%= event.name %></td>
-    <td><%= event.peak %></td>
-    <td><%= event.start_time %></td>
-    <td><%= event.end_time %></td>
-  </tr>
-
-</div>
-<% end %>
+  <% if @today_events.any? %>
+    <%= render 'pages/event_row', :object => @today_events %>
+  <% end %>
+  <% if @tomorrow_events.any? %>
+    <%= render 'pages/event_row', :object => @tomorrow_events %>
+  <% end %>
+  <% if @week_events.any? %>
+    <%= render 'pages/event_row', :object => @week_events %>
+  <% end %>
 </div>
