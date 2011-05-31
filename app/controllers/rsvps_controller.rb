@@ -43,12 +43,11 @@ class RsvpsController < ApplicationController
   def create
     event = Event.find(params[:rsvp][:event_id])
     current_user.attend!(event)
-    redirect_to event_path(event.id), :notice => 'RSVP was successfully created.'
-    #@rsvp = Rsvp.new(params[:rsvp])
+    redirect_to event_path(event.id), :notice => 'Your RSVP has been saved'
     #respond_to do |format|
     #  if @rsvp.save
     #    format.html { redirect_to(@rsvp, :notice => 'Rsvp was successfully created.') }
-    #   format.xml  { render :xml => @rsvp, :status => :created, :location => @rsvp }
+    #    format.xml  { render :xml => @rsvp, :status => :created, :location => @rsvp }
     #  else
     #    format.html { render :action => "new" }
     #    format.xml  { render :xml => @rsvp.errors, :status => :unprocessable_entity }

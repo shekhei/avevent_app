@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
 <p>
   <b>Name:</b>
@@ -19,6 +19,12 @@
   <b>End time:</b>
   <%= @event.end_time %>
 </p>
+
+<p>
+  <b>Attending Count</b>
+  <%= Rsvp.count(:conditions => ['event_id = ?', @event.id ]) %>
+</p>
+
 <% unless current_user?(@user) %>
   <% if current_user.attending?(@event) %>
     <%= form_for current_user.rsvps.find_by_event_id(@event), :html => {:method => :delete } do |f| %>
