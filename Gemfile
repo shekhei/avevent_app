@@ -18,8 +18,8 @@ group :test do
   gem 'webrat', '0.7.1'
 end
 
-gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
-
+#gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
+gem 'sqlite3'
 # Use unicorn as the web server
 # gem 'unicorn'
 
