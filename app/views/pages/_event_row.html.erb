@@ -7,7 +7,13 @@
       <li>
         <%= link_to image_tag("eventlogo.png", :alt => event.name), event_path(event.id), :class => "eventLogo" %>
         <div class="rsvpBtn">
-          <%= link_to 'RSVP', event_path(event.id) %>
+          <% unless current_user?(@user) %>
+            <% if current_user.attending?(event.id) %>
+              <%= link_to 'Attending', event_path(event.id) %>
+            <% else %>
+              <%= link_to 'RSVP', event_path(event.id) %>
+            <% end %>
+          <% end %>
         </div>
         <div class="eventInfo">
           <span class="eventTitle"><%= link_to event.name, event_path(event.id), :class => "eventTitleLink" %></span>
