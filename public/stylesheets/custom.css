@@ -259,3 +259,7 @@ ul.users {
   text-decoration:none;
 }
 
+.eventRow ul li .eventDateTime{
+  color:#808080;
+  font-size:11px;
+}

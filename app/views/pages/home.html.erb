@@ -3,12 +3,12 @@
 </div>
 <div class="mainCol">
   <% if @today_events.any? %>
-    <%= render 'pages/event_row', :object => @today_events %>
+    <%= render 'pages/event_row', :object => @today_events, :date_type => "Today" %>
   <% end %>
   <% if @tomorrow_events.any? %>
-    <%= render 'pages/event_row', :object => @tomorrow_events %>
+    <%= render 'pages/event_row', :object => @tomorrow_events, :date_type => "Tomorrow" %>
   <% end %>
   <% if @week_events.any? %>
-    <%= render 'pages/event_row', :object => @week_events %>
+    <%= render 'pages/event_row', :object => @week_events , :date_type => "This Week"%>
   <% end %>
 </div>
