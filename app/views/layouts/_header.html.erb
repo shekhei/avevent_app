@@ -4,8 +4,10 @@
     <ul id="jsddm">
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "About Basecamp", about_path %></li>
-      <% if current_user.admin? %>
-      <li><%= link_to "Event", events_path %></li>
+	  <% if signed_in? %>
+        <% if current_user.admin? %>
+		  <li><%= link_to "Event", events_path %></li>
+		<% end %>
       <% end %>
       <li><a href="#">The 7 Peaks</a>
         <ul>

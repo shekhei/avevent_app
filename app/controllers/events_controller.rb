@@ -6,21 +6,23 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @events }
-    end
+    #respond_to do |format|
+    #  format.html  index.html.erb
+    # format.xml  { render :xml => @events }
+    #end
   end
 
   # GET /events/1
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @event }
-    end
+    @rsvp = Rsvp.find_by_event_id(@event.id)
+	#@allname = User.find(@rsvp.user_id)
+	
+    #respond_to do |format|
+    #  format.html  show.html.erb
+    #  format.xml  { render :xml => @event }
+    #end
   end
 
   # GET /events/new

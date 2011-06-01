@@ -7,20 +7,29 @@
       <li>
         <%= link_to image_tag("eventlogo.png", :alt => event.name), event_path(event.id), :class => "eventLogo" %>
         <div class="rsvpBtn">
-          <% unless current_user?(@user) %>
+          <% if signed_in? %>
             <% if current_user.attending?(event.id) %>
               <%= link_to 'Attending', event_path(event.id) %>
             <% else %>
-              <%= link_to 'RSVP', event_path(event.id) %>
-            <% end %>
-          <% end %>
+			  <%= link_to 'RSVP', event_path(event.id) %>			
+            <% end %>   
+	      <% else %>
+		    <%= link_to 'RSVP', signin_path %>
+		  <% end %>
         </div>
         <div class="eventInfo">
           <span class="eventTitle"><%= link_to event.name, event_path(event.id), :class => "eventTitleLink" %></span>
           <div class="eventDateTime"><%= event.start_time.strftime("%A, %b %d at %I:%M%p") %></div>
-          <div class="eventAttendCount"><%= pluralize(Rsvp.count(:conditions => ['event_id = ?', event.id ]), "participant") %></div>
+          <div class="eventAttendCount">
+			<% if Rsvp.where(:event_id => event.id).any? %>
+			  <%= pluralize(Rsvp.where(:event_id => event.id).count, "participant") %>
+			<% else %>
+			  Be the first to join!
+			<% end %>
+		  </div>
         </div>
       </li>
     <% end %>
   </ul>
 </div>
+	

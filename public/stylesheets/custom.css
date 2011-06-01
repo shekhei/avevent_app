@@ -266,7 +266,7 @@ ul.users {
 
 #jsddm{
   margin: 0;
-	padding: 0}
+  padding: 0}
 
 #jsddm li{
   float: left;
@@ -292,10 +292,10 @@ ul.users {
 
 #jsddm li ul{
   margin: 0;
-  padding: 6px 10px 0px 5px;
+  padding: 8px 10px 0px 5px;
   position: absolute;
   visibility: hidden;
-  width:100px;
+  width:90px;
 }
 
 #jsddm li ul li{
@@ -320,4 +320,28 @@ ul.users {
 .eventRow ul li .eventAttendCount{
   color:#808080;
   font-size:11px;
+}
+
+.leftCol{
+  float:left;
+  padding:20px 0 0 2px;
+  width:179px;
+  word-wrap: break-word;
+}
+
+.leftCol .eventLogo{
+  width: 179px;
+  marigin-bottom:10px;
+  border: 0 none;
+}
+
+.leftCol .eventPeopleCount{
+  font-size:11px;
+  color: #808080;
+}
+
+.leftCol ul{
+  margin-top:5px;
+  list-style-type:none;
+  padding:0;
 }
