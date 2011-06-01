@@ -345,3 +345,68 @@ ul.users {
   list-style-type:none;
   padding:0;
 }
+
+.leftCol ul li{
+  height:20px;
+  vertical-align:middle;
+  color: #3B5998;
+  text-decoration:none;
+  font-size:12px;
+}
+.eventSideBtn {
+  float:right;
+}
+.headerArea {
+  float:left;
+  margin: 20px 0px 10px 40px;
+  width:700px;
+}
+
+.headerArea .profileHeader{
+  width:513px;
+
+}
+.rightContainer{
+  margin-left:181px;
+  display:block;
+
+}
+.contentCol {
+  width:493px;
+  float:left;
+  padding-left:40px;
+}
+.rightContainer .eventInfo{
+  padding-right:0;
+  width:493px;
+  float:left;
+  padding-left:40px;
+}
+.rightContainer .eventInfoTable{
+  border: 0 none;
+  border-collapse:collapse;
+  border-spacing:0;
+  width:100%;
+  margin-bottom:10px;
+  margin-top:10px;
+}
+
+.eventInfoTable th.label{
+  width:80px;
+  padding-right:8px;
+  color:#3B5998;
+  line-height:15px;
+  font-weight:bold;
+  vertical-align:top;
+  text-align:left;
+  height:30px;
+}
+
+.eventInfoTable td.data{
+  padding:3px 0 1px;
+  color:#808080;
+  line-height:15px;
+  vertical-align:top;
+  text-align:justify;
+  background: none;
+}

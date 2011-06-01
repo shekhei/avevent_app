@@ -29,7 +29,7 @@ class RsvpsController < ApplicationController
   def create
     @event = Event.find(params[:rsvp][:event_id])
     current_user.attend!(@event)
-    redirect_to event_path(@event.id), :notice => "RSVP Saved"
+    redirect_to event_path(@event), :notice => "RSVP Saved"
     #@rsvp = Rsvp.new(params[:rsvp])
   end
 
@@ -37,7 +37,6 @@ class RsvpsController < ApplicationController
   # PUT /rsvps/1.xml
   def update
     @rsvp = Rsvp.find(params[:id])
-    end
   end
 
   # DELETE /rsvps/1

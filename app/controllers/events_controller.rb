@@ -16,7 +16,9 @@ class EventsController < ApplicationController
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
-    @rsvp = Rsvp.find_by_event_id(@event.id)
+    @title = @event.name
+    @rsvp = Rsvp.where(:event_id => @event)
+    session[:return_to] = request.fullpath
 	#@allname = User.find(@rsvp.user_id)
 	
     #respond_to do |format|

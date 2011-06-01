@@ -1,7 +1,7 @@
 module SessionsHelper
   def sign_in(user)
     cookies.permanent.signed[:remember_token] = user.email
-	self.current_user = user
+	  self.current_user = user
   end
   
   def signed_in?
@@ -22,7 +22,7 @@ module SessionsHelper
   
   def sign_out
     cookies.delete(:remember_token)
-	self.current_user = nil
+	  self.current_user = nil
   end
   
   def deny_access
@@ -32,7 +32,7 @@ module SessionsHelper
   
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
-	clear_return_to
+	  clear_return_to
   end
   
   private

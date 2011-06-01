@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
+
   end
 
   # GET /users/new
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
 	if @user.save
 	  sign_in @user
 	  flash[:success] = "Welcome to Staff Basecamp"
-	  redirect_to @user
+	  redirect_back_or @user
     else
 	  @title = "Sign up"
 	  render 'new'
