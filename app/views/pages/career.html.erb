@@ -4,14 +4,13 @@
 <div class="mainCol">
   <% if @today_events_career.any? %>
     <%= render 'pages/event_row', :object => @today_events_career, :date_type => "Today" %>
-  <% end %>
-  <% if @tomorrow_events_career.any? %>
+  <% elsif @tomorrow_events_career.any? %>
     <%= render 'pages/event_row', :object => @tomorrow_events_career, :date_type => "Tomorrow" %>
-  <% end %>
-  <% if @week_events_career.any? %>
-    <%= render 'pages/event_row', :object => @week_events_career , :date_type => "This Week"%>
-  <% end %>
-  <% if @month_events_career.any? %>
-    <%= render 'pages/event_row', :object => @month_events_career , :date_type => "This Month"%>
+  <% elsif @week_events_career.any? %>
+    <%= render 'pages/event_row', :object => @week_events_career , :date_type => "This Week" %>
+  <% elsif @month_events_career.any? %>
+    <%= render 'pages/event_row', :object => @month_events_career , :date_type => "This Month" %>
+  <% else %>
+    No Events in Career Peak
   <% end %>
 </div>

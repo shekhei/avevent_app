@@ -4,14 +4,13 @@
 <div class="mainCol">
   <% if @today_events_social.any? %>
     <%= render 'pages/event_row', :object => @today_events_social, :date_type => "Today" %>
-  <% end %>
-  <% if @tomorrow_events_social.any? %>
+  <% elsif @tomorrow_events_social.any? %>
     <%= render 'pages/event_row', :object => @tomorrow_events_social, :date_type => "Tomorrow" %>
-  <% end %>
-  <% if @week_events_social.any? %>
+  <% elsif @week_events_social.any? %>
     <%= render 'pages/event_row', :object => @week_events_social , :date_type => "This Week"%>
-  <% end %>
-  <% if @month_events_social.any? %>
+  <% elsif @month_events_social.any? %>
     <%= render 'pages/event_row', :object => @month_events_social , :date_type => "This Month"%>
+  <% else %>
+    No Events in Social
   <% end %>
 </div>

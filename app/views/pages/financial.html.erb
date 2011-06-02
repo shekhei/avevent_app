@@ -4,14 +4,13 @@
 <div class="mainCol"> 
   <% if @today_events_financial.any? %>
     <%= render 'pages/event_row', :object => @today_events_financial, :date_type => "Today" %>
-  <% end %>
-  <% if @tomorrow_events_financial.any? %>
+  <% elsif @tomorrow_events_financial.any? %>
     <%= render 'pages/event_row', :object => @tomorrow_events_financial, :date_type => "Tomorrow" %>
-  <% end %>
-  <% if @week_events_financial.any? %>
+  <% elsif @week_events_financial.any? %>
     <%= render 'pages/event_row', :object => @week_events_financial , :date_type => "This Week"%>
-  <% end %>
-  <% if @month_events_financial.any? %>
+  <% elsif @month_events_financial.any? %>
     <%= render 'pages/event_row', :object => @month_events_financial , :date_type => "This Month"%>
+  <% else %>
+    No Events in Financial Peak
   <% end %>
 </div>

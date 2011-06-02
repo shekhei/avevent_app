@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
+  before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user,   :only => [:edit, :update, :destroy]
+  before_filter :admin_user,   :only => [:index, :show, :edit, :update, :destroy]
   # GET /users
   # GET /users.xml
   def index
