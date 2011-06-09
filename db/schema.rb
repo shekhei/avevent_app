@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529064345) do
+ActiveRecord::Schema.define(:version => 20110609171454) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(:version => 20110529064345) do
     t.datetime "updated_at"
   end
 
+  create_table "photos", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+    t.integer  "event_id"
+    t.string   "name"
+  end
+
   create_table "rsvps", :force => true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
@@ -29,6 +37,10 @@ ActiveRecord::Schema.define(:version => 20110529064345) do
     t.datetime "updated_at"
     t.string   "status"
   end
+
+  add_index "rsvps", ["event_id"], :name => "index_rsvps_on_event_id"
+  add_index "rsvps", ["user_id", "event_id"], :name => "index_rsvps_on_user_id_and_event_id", :unique => true
+  add_index "rsvps", ["user_id"], :name => "index_rsvps_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"

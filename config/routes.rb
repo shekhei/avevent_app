@@ -1,5 +1,7 @@
 AveventApp::Application.routes.draw do
 
+  resources :photos
+
   resources :rsvps, :only => [:new, :create, :destroy]
 
   resources :events

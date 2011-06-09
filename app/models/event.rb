@@ -15,7 +15,7 @@
 class Event < ActiveRecord::Base
   has_many :rsvps
   has_many :users, :through => :rsvps
-  
+  has_many :photos
   attr_accessible :name, :peak, :start_time, :end_time
   scope :for_today, where(:start_time => Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
   scope :for_tomorrow, where(:start_time => Time.zone.now.tomorrow.beginning_of_day..Time.zone.now.tomorrow.end_of_day)
