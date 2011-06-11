@@ -1,7 +1,7 @@
 <div class="leftCol">
-  <%= link_to image_tag("eventlogo_big.png", :alt => @event.name), :class => "eventLogo" %>
+  <%= image_tag @event.image_url(:eventthumb), :alt => @event.name, :class => "eventLogo" %>
   <div class="eventPeopleCount">
-    <%= Rsvp.count(:conditions => ['event_id = ?', @event ]) %> Attending
+    <%= @event.rsvps.count %> Attending
   </div>
   <% if @rsvp.any? %>
   <ul>
@@ -24,15 +24,30 @@
       <div>
           <% if signed_in? %>
             <% if current_user.attending?(@event) %>
-              <%= form_for current_user.rsvps.find_by_event_id(@event), :html => {:method => :delete } do |f| %>
+							<% ticket = current_user.rsvps.find_by_event_id(@event) %>
+              <%= form_for ticket, :html => {:method => :delete } do |f| %>
+								<div class="field">
+									<%= f.label :notes %>
+							    <%= ticket.notes %>
+								</div>
                 <div class="actions"><%= f.submit "Not Attend" %></div>
               <% end %>
             <% else %>
-              <%= form_for current_user.rsvps.build(:event_id => @event.id) do |f| %>
-              <div><%= f.hidden_field :event_id %></div>
-              <div class="actions"><%= f.submit "Attend" %></div>
+							<% if @event.vacancy? %>
+	              <%= form_for current_user.rsvps.build(:event_id => @event.id) do |f| %>
+		              <div><%= f.hidden_field :event_id %></div>
+									<div>
+										<%= f.label :notes %>
+										<%= f.text_field :notes %>
+									</div>
+		              <div class="actions"><%= f.submit "Attend" %></div>
+								<% end %>
+							<% else %>
+								<div>
+									There is no more vacancy for this event.
+								</div>
+							<% end %>
             <% end %>
-          <% end %>
           <% else %>
             <%= button_to 'RSVP', signin_path %>
           <% end %>
@@ -48,24 +63,28 @@
         </tr>
         <tr>
           <th class="label">Location:</th>
-          <td class="data">Lorem ipsum dolor sit amet</td>
+          <td class="data"><%= @event.location %></td>
         </tr>
         <tr>
           <th class="label">Event Info:</th>
-          <td class="data">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Integer in
-mi a mauris ornare sagittis. Suspendisse potenti. Suspendisse dapibus
-dignissim dolor. Nam sapien tellus, tempus et, tempus ac, tincidunt
-in, arcu. Duis dictum. Proin magna nulla, pellentesque non, commodo
-et, iaculis sit amet, mi. Mauris condimentum massa ut metus. Donec
-viverra, sapien mattis rutrum tristique, lacus eros semper tellus, et
-molestie nisi sapien eu massa. Vestibulum ante ipsum primis in</td>
+          <td class="data"><%= @event.info %></td>
         </tr>
+				<% if current_user.admin? %>
 				<tr>
-					<td>
-						<%= link_to "Upload photo", new_photo_path(:event_id => @event) %>
-					</td>
+					<th class="label">Max Number</th>
+					<td class="data"><%= @event.max_number %></td>
+				</tr>
+				<% end %>
       </tbody>
     </table>
+		<div id="eventPhotos">
+			<ul>
+			<% for photo in @photo %>
+				<li><%= image_tag photo.image_url(:thumb) if photo.image? %></li>
+			<% end %>
+			</ul>
+			<%= link_to "Upload photo", new_photo_path(:event_id => @event) %>
+		</div>
   </div>
 </div>
 

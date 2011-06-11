@@ -28,8 +28,13 @@ class RsvpsController < ApplicationController
   # POST /rsvps.xml
   def create
     @event = Event.find(params[:rsvp][:event_id])
-    current_user.attend!(@event)
-    redirect_to event_path(@event), :notice => "RSVP Saved"
+    note = params[:rsvp][:notes]
+    if @event.vacancy?
+      current_user.attend!(@event, note)
+      redirect_to event_path(@event), :notice => "RSVP Saved"
+    else
+      redirect_to event_path(@event), :alert => "Sorry, No more vacancy for this event"
+    end
     #@rsvp = Rsvp.new(params[:rsvp])
   end
 

@@ -18,6 +18,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @title = @event.name
     @rsvp = Rsvp.where(:event_id => @event)
+    @photo = Photo.where(:event_id => @event)
     session[:return_to] = request.fullpath
 	#@allname = User.find(@rsvp.user_id)
 	

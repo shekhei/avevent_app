@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
     rsvps.find_by_event_id(event)
   end
 
-  def attend!(event)
-    rsvps.create!(:event_id => event.id)
+  def attend!(event, note)
+    rsvps.create!(:event_id => event.id, :notes => note )
   end
 
   def unattend!(event)
