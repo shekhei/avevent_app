@@ -14,4 +14,8 @@
   <% if @month_events.any? %>
     <%= render 'pages/event_row', :object => @month_events , :date_type => "This Month"%>
   <% end %>
+	<div>
+		<%= link_to "Past Events", pastevent_path %>
+	</div>
 </div>
+

@@ -17,8 +17,9 @@ class User < ActiveRecord::Base
   has_many :events, :through => :rsvps
   attr_accessible :name, :email, :department
 
-  email_regex = /\A[\w+\-.]+@aviva\-asia\.com\z/i
-
+  #email_regex = /\A[\w+\-.]+@aviva\-asia\.com\z/i
+  email_regex = /\A[\w+\-.]+@gmail\.com\z/i
+  
   validates :name,       :presence        => true, 
                          :length          => { :maximum => 50 }
   validates :email,      :presence        => true, 

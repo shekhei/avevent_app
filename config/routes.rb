@@ -21,6 +21,7 @@ AveventApp::Application.routes.draw do
   match '/career',     :to => 'pages#career'
   match '/community',  :to => 'pages#community'
   match '/possibility',     :to => 'pages#possibility'
+  match '/pastevent',  :to => 'pages#past'
   
   root :to => 'pages#home'
   # The priority is based upon order of creation:

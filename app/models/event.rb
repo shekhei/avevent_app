@@ -25,6 +25,7 @@ class Event < ActiveRecord::Base
   scope :from_two_days_later, where("start_time > ?", Time.zone.now.midnight + 2.day)
   scope :from_this_week_later, where("start_time > ?", Time.zone.now.end_of_week)
   scope :is_active, where("start_time > ?", Time.zone.now.midnight)
+  scope :is_past, where("start_time < ?", Time.zone.now.midnight)
   scope :peakcat, lambda {|peak| where(:peak => peak) }
   
   def vacancy?

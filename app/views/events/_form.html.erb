@@ -16,11 +16,12 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+		<%= f.label :image %><br />
     <%= f.file_field :image %>
 	</div>
   <div class="field">
     <%= f.label :peak %><br />
-    <%= f.text_field :peak %>
+    <%= f.select :peak, options_for_select([ "Personal", "Fit", "Financial", "Social", "Career", "Community", "Possibility" ], @event.peak)%>
   </div>
 	<div class="field">
 		<%= f.label :location %><br />

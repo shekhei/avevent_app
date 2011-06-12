@@ -1,0 +1,11 @@
+<div class="eventheader">
+  <h2>Past Events</h2>
+</div>
+<% @past_events_months.sort.each do |month, events| %>
+  <h3><%= month.strftime('%B') %></h3>
+  <% for event in events %>
+    <div>
+      <strong><%= event.name %></strong>
+    </div>
+  <% end %>
+<% end %>

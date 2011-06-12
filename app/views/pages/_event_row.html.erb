@@ -5,7 +5,7 @@
   <ul>
     <% object.each do |event| %>
       <li>
-        <%= link_to image_tag("eventlogo.png", :alt => event.name), event_path(event.id), :class => "eventLogo" %>
+        <%= link_to image_tag(event.image_url(:eventsmallthumb), :alt => event.name), event_path(event.id), :class => "eventLogo" %>
         <div class="rsvpBtn">
           <% if signed_in? %>
             <% if current_user.attending?(event.id) %>

@@ -13,7 +13,12 @@ class PagesController < ApplicationController
 
   def faq
   end
-
+  
+  def past
+    @past_events = Event.is_past
+    @past_events_months = @past_events.group_by { |t| t.start_time.beginning_of_month }
+  end
+  
   def social
     @title = "Social Event"
     @today_events_social = Event.for_today.peakcat('Social')
