@@ -4,8 +4,8 @@ gem 'rake', '0.8.7'
 gem 'rails', '3.0.7'
 gem 'rmagick'
 gem 'carrierwave'
-
-
+gem 'jquery-rails', '~> 1.0.9'
+gem 'fog'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

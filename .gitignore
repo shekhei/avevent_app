@@ -8,3 +8,5 @@ doc/
 .idea/
 .project
 public/uploads/
+.DS_Store
+

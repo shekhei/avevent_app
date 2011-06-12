@@ -1,4 +1,3 @@
-var $j = jQuery.noConflict();
 var timeout    = 500;
 var closetimer = 0;
 var ddmenuitem = 0;
@@ -6,7 +5,7 @@ var ddmenuitem = 0;
 function jsddm_open(){  
   jsddm_canceltimer();
   jsddm_close();
-  ddmenuitem = $j(this).find('ul').css('visibility', 'visible');
+  ddmenuitem = $(this).find('ul').css('visibility', 'visible');
 }
 
 function jsddm_close(){  
@@ -24,9 +23,9 @@ function jsddm_canceltimer(){
   }
 }
 
-$j().ready(function(){  
-   $j('#jsddm > li').bind('mouseover', jsddm_open)
-   $j('#jsddm > li').bind('mouseout',  jsddm_timer)
+$(document).ready(function(){  
+   $('#jsddm > li').bind('mouseover', jsddm_open)
+   $('#jsddm > li').bind('mouseout',  jsddm_timer)
 });
 
 document.onclick = jsddm_close;
