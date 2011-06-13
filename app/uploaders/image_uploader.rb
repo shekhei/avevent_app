@@ -7,8 +7,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
-  # storage :file
-  storage :s3
+  storage :file
+  # storage :s3
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -31,11 +31,11 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_limit => [100, 66]
+    process :resize_to_fill => [100, 66]
   end
   
   version :eventthumb do 
-    process :resize_to_limit => [200, 150]
+    process :resize_to_fill => [200, 150]
   end
   
   version :eventsmallthumb do

@@ -69,7 +69,7 @@
           <th class="label">Event Info:</th>
           <td class="data"><%= @event.info %></td>
         </tr>
-				<% if current_user.admin? %>
+				<% if signed_in? && current_user.admin? %>
 				<tr>
 					<th class="label">Max Number</th>
 					<td class="data"><%= @event.max_number %></td>
@@ -81,11 +81,34 @@
 			<h4>Event Photo</h4>
 			<ul>
 			<% for photo in @photo %>
-				<li><%= image_tag photo.image_url(:thumb) if photo.image? %></li>
+				<li><%= link_to image_tag(photo.image_url(:thumb)), photo.image_url if photo.image? %></li>
 			<% end %>
 			</ul>
 		</div>
-		<div><%= link_to "Upload photo", new_photo_path(:event_id => @event) %></div>
+		<% if signed_in? %>
+			<div>
+				<%= link_to "Upload photo", new_photo_path(:event_id => @event) %>
+			</div>
+		<% end %>
+		<div id="eventWalls">
+			<h4>Wall</h4>
+			<% for post in @existingpost %>
+				<p>
+					<%= User.find(post.user_id).name %> says:
+					<%= post.content %>
+				</p>
+			<% end %>
+			<% if signed_in? %>
+				<%= form_for @micropost do |f| %>
+	        <div><%= f.hidden_field :event_id, :value => @event.id %></div>
+					<div>
+						<%= f.label :content %>
+						<%= f.text_field :content %>
+					</div>
+	        <div class="actions"><%= f.submit "Post" %></div>
+				<% end %>
+			<% end %>
+		</div>
   </div>
 </div>
 <div style="clear:both"></div>

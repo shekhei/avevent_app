@@ -15,8 +15,9 @@ class PagesController < ApplicationController
   end
   
   def past
-    @past_events = Event.is_past
+    @past_events = Event.is_past.all
     @past_events_months = @past_events.group_by { |t| t.start_time.beginning_of_month }
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
   
   def social

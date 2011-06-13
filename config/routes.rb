@@ -7,6 +7,7 @@ AveventApp::Application.routes.draw do
   resources :events
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :microposts
   
   match '/signin',     :to => 'sessions#new'
   match '/signout',    :to => 'sessions#destroy'

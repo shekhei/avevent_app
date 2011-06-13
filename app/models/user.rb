@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :rsvps
   has_many :events, :through => :rsvps
   attr_accessible :name, :email, :department
+	has_many :microposts
 
   #email_regex = /\A[\w+\-.]+@aviva\-asia\.com\z/i
   email_regex = /\A[\w+\-.]+@gmail\.com\z/i

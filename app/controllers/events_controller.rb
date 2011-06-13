@@ -19,6 +19,8 @@ class EventsController < ApplicationController
     @title = @event.name
     @rsvp = Rsvp.where(:event_id => @event)
     @photo = Photo.where(:event_id => @event)
+    @existingpost = Micropost.where(:event_id => @event)
+    @micropost = Micropost.new(:event_id => @event) if signed_in?
     session[:return_to] = request.fullpath
 	#@allname = User.find(@rsvp.user_id)
 	

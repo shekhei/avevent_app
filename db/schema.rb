@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110611120313) do
+ActiveRecord::Schema.define(:version => 20110612153959) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(:version => 20110611120313) do
     t.integer  "max_number"
     t.string   "image"
   end
+
+  create_table "microposts", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "microposts", ["event_id"], :name => "index_microposts_on_event_id"
 
   create_table "photos", :force => true do |t|
     t.datetime "created_at"
