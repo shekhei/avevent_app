@@ -9,6 +9,7 @@ class MicropostsController < ApplicationController
       redirect_to event_path(@event)
     else
       flash[:error] = "Wrong Save"
+      redirect_to event_path(@event)
     end
   end
     
